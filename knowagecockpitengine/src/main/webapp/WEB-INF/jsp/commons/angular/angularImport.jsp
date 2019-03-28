@@ -25,7 +25,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
 <meta name="viewport" content="width=device-width">
 
-<link rel="stylesheet" href="<%=GeneralUtilities.getSpagoBiContext()%>/themes/sbi_default/fonts/font-awesome-4.4.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="<%=GeneralUtilities.getSpagoBiContext()%>/node_modules/font-awesome/css/font-awesome.min.css">
 
 <!--  script type="text/javascript" src="<%=GeneralUtilities.getSpagoBiContext()%>/js/lib/angular/angular_1.4/angular.js"></script-->
 
@@ -138,7 +138,7 @@ END-PRODUCTION -->
 <link rel="stylesheet" 	href="<%=GeneralUtilities.getSpagoBiContext()%>/js/lib/angular/angular-json-tree/json-tree.css">
 <script type="text/javascript" src="<%=GeneralUtilities.getSpagoBiContext()%>/js/lib/angular/angular-json-tree/json-tree.js"></script>
 <!-- MOMENT.JS -->
-<script type="text/javascript" src="<%= GeneralUtilities.getSpagoBiContext() %>/node_modules/moment/min/moment.min.js"></script>
+<script type="text/javascript" src="<%= GeneralUtilities.getSpagoBiContext() %>/node_modules/moment/min/moment-with-locales.min.js"></script>
 
 <!-- html2canvas -->
 <script type="text/javascript" src="<%= GeneralUtilities.getSpagoBiContext() %>/node_modules/html2canvas/dist/html2canvas.min.js"></script>
