@@ -43,8 +43,6 @@ function advancedTableWidgetEditControllerFunction($scope,finishEdit,$q,model,sb
     		cellEditorParams: {values: ['ATTRIBUTE','MEASURE']}},{headerName: 'Data Type', field: 'type',cellRenderer:typeCell},
     	{headerName: $scope.translate.load('sbi.cockpit.widgets.table.column.aggregation'), field: 'aggregationSelected', cellRenderer: aggregationRenderer,"editable":isAggregationEditable, cellClass: 'editableCell',
     		cellEditor:"agSelectCellEditor",cellEditorParams: {values: $scope.availableAggregations}},
-    	{headerName: $scope.translate.load('sbi.cockpit.widgets.table.column.summaryfunction'), field: 'funcSummary', cellRenderer: aggregationRenderer,"editable":isAggregationEditable, cellClass: 'editableCell',
-    		cellEditor:"agSelectCellEditor",cellEditorParams: {values: $scope.availableAggregations}},
     	{headerName:"",cellRenderer: buttonRenderer,"field":"valueId","cellStyle":{"border":"none !important","text-align": "right","display":"inline-flex","justify-content":"flex-end"},width: 150,suppressSizeToFit:true, tooltip: false}];
 	
 	$scope.columnsGrid = {
@@ -213,7 +211,6 @@ function advancedTableWidgetEditControllerFunction($scope,finishEdit,$q,model,sb
 			for(var i=0;i<$scope.columnSelected.length;i++){
 				var obj = $scope.columnSelected[i];
 				obj.aggregationSelected = 'NONE';
-				obj["funcSummary"] = "NONE";
 				obj.typeSelected = $scope.columnSelected[i].type;
 				obj.label = $scope.columnSelected[i].alias;
 				obj.aliasToShow = $scope.columnSelected[i].alias;

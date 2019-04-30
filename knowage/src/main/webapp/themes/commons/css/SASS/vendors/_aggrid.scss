@@ -1,7 +1,11 @@
 $aggrid-border-color: #d9dcde;
 .ag-theme-balham {
 	font: 400 $mediumFontSize $defaultFontFamily;
+	.ag-body-viewport.ag-layout-normal,.ag-body-horizontal-scroll-viewport {
+		@include coolScrollBars($baseColor,6px);
+	}
 	.ag-floating-bottom {
+		overflow-y: hidden !important;
 		.ag-row {
 			border-top: 1px solid $aggrid-border-color;
 		}
