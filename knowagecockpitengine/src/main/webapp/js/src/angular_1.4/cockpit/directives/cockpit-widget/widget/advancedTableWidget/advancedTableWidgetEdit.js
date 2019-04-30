@@ -212,8 +212,8 @@ function advancedTableWidgetEditControllerFunction($scope,finishEdit,$q,model,sb
 
 			for(var i=0;i<$scope.columnSelected.length;i++){
 				var obj = $scope.columnSelected[i];
-				obj.aggregationSelected = 'SUM';
-				obj["funcSummary"] = "SUM";
+				obj.aggregationSelected = 'NONE';
+				obj["funcSummary"] = "NONE";
 				obj.typeSelected = $scope.columnSelected[i].type;
 				obj.label = $scope.columnSelected[i].alias;
 				obj.aliasToShow = $scope.columnSelected[i].alias;
@@ -230,7 +230,7 @@ function advancedTableWidgetEditControllerFunction($scope,finishEdit,$q,model,sb
 	
 	$scope.deleteColumn = function(rowName,event) {
 		for(var k in $scope.newModel.content.columnSelectedOfDataset){
-			if($scope.newModel.content.columnSelectedOfDataset[k].alia == rowName) var item = $scope.newModel.content.columnSelectedOfDataset[k];
+			if($scope.newModel.content.columnSelectedOfDataset[k].alias == rowName) var item = $scope.newModel.content.columnSelectedOfDataset[k];
 		}
   		  var index=$scope.newModel.content.columnSelectedOfDataset.indexOf(item);
 		  $scope.newModel.content.columnSelectedOfDataset.splice(index,1);
