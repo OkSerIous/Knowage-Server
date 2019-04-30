@@ -10,7 +10,7 @@ $aggrid-border-color: #d9dcde;
 		font-family: $defaultFontFamily;
 		font: 600 $mediumFontSize $defaultFontFamily;
 	}
-	.ag-body-container {
+	.ag-center-cols-viewport {
 		.md-button {
 			height: 24px;
 			width: 24px;
@@ -128,7 +128,9 @@ $aggrid-border-color: #d9dcde;
 		.ag-root {
 			border: none;
 		}
-		.ag-paging-panel {
+	}
+	.ag-paging-panel {
+		&.ag-noBorders {
 			border-top: none;
 		}
 	}
@@ -136,12 +138,12 @@ $aggrid-border-color: #d9dcde;
 		height: 100%;
 		&.backendPagination {
 			height: calc(100% - 32px);
-			div[ref=south] {
+			div.ag-paging-panel.ag-unselectable {
 				display: none;
 			}
 		}
 		&.noPagination {
-			div[ref=south] {
+			div.ag-paging-panel.ag-unselectable {
 				display: none;
 			}
 		}

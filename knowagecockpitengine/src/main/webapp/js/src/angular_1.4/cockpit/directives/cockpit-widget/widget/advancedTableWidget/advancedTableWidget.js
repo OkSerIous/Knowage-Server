@@ -57,6 +57,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 			cockpitModule_properties){
 		
 		$scope.showGrid = true;
+		var _rowHeight;
 		if(!$scope.ngModel.settings){
 			$scope.ngModel.settings = {
 				"pagination" : {
@@ -93,6 +94,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 						tempCol.headerComponentParams = {template: headerTemplate()};
 						tempCol.cellStyle = getCellStyle;
 						tempCol.cellRenderer = cellRenderer;
+						if($scope.ngModel.settings.autoRowsHeight) {
+							tempCol.autoHeight = true;
+							if(tempCol.style) tempCol.style['white-space'] = 'normal';
+							else tempCol.style = {'white-space':'normal'};
+						}else if(tempCol.style) tempCol.style['white-space'] = 'nowrap';
+						tempCol.autoHeight = $scope.ngModel.settings.autoRowsHeight || false,
 						columns.push(tempCol);
 						break;
 					}
@@ -197,6 +204,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 			if(datasetRecords){
 				$scope.metadata = datasetRecords.metaData;
 				$scope.totalRows = datasetRecords.results;
+				if($scope.ngModel.style && $scope.ngModel.style.tr && $scope.ngModel.style.tr.height){
+					_rowHeight = $scope.ngModel.style.tr.height;
+					$scope.advancedTableGrid.api.resetRowHeights();
+				}else delete _rowHeight;
 				if($scope.ngModel.style && $scope.ngModel.style.th){
 					if($scope.ngModel.style.th.enabled) $scope.advancedTableGrid.api.setHeaderHeight($scope.ngModel.style.th.height || 32);
 					else $scope.advancedTableGrid.api.setHeaderHeight(0);
@@ -236,9 +247,16 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 				onSortChanged: changeSorting,
 				enableSorting: true,
 				pagination : true,
-				onCellClicked: onCellClicked
+				onCellClicked: onCellClicked,
+				getRowHeight : function(params){
+					if(_rowHeight > 0) return parseInt(_rowHeight);
+					else return 28;
+				}
 		}
-		
+		function getRowHeight(params) {
+			if(_rowHeight > 0) return _rowHeight;
+			else return 28;
+		}
 		function changeSorting(){
 			if($scope.ngModel.settings.pagination && $scope.ngModel.settings.pagination.enabled && !$scope.ngModel.settings.pagination.frontEnd){
 				$scope.showWidgetSpinner()
