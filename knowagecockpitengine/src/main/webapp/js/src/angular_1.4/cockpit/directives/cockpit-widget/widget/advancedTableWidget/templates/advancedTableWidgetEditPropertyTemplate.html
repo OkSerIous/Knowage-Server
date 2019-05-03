@@ -17,7 +17,7 @@
 								<md-switch ng-model="newModel.settings.pagination.enabled" aria-label="Fixed rows per page" layout-align="center center">
 									 Pagination
 								</md-switch>
-						     </md-input-container>
+						    </md-input-container>
 							<md-input-container flex class="md-block"> 
 								<label>{{translate.load('sbi.cockpit.widgets.table.tabledesignerpanel.tableoptions.maxrowsnumber')}}</label>
 									<input class="input_class" ng-model="newModel.settings.pagination.itemsNumber" type="number" min="1" ng-disabled="!newModel.settings.pagination.enabled">
@@ -32,7 +32,7 @@
 					</md-card>
 					
 					<md-card>
-						<md-card-content class="noPadding" layout="column" layout-align="center none">
+						<md-card-content class="noPadding" layout="column">
 						
 							<md-subheader class="noPadding" style="margin-bottom:8px;">
 								<div layout="row" layout-align="start center" style="height:48px; padding-left:8px">
@@ -165,6 +165,23 @@
 										<input class="input_class" ng-disabled="newModel.settings.autoRowsHeight" ng-model="newModel.style.tr.height" />
 									</md-input-container>
 								</div>
+							</div>
+							<div flex layout="row" >
+								<div flex layout="row" layout-align="start center">
+									<md-checkbox layout-align="space-around center" ng-model="newModel.settings.alternateRows.enabled" class="md-block"
+											aria-label="enable alternate rows" ng-click="enableAlternate()">
+										{{::translate.load('sbi.cockpit.table.alternate')}}
+									</md-checkbox>
+								</div>
+								<md-input-container flex class="md-block">
+									<label>{{::translate.load('sbi.cockpit.table.alternate.evenrows')}}</label>
+									<color-picker options="colorPickerPropertyEvenOddRows" ng-model="newModel.settings.alternateRows.evenRowsColor"/>
+								</md-input-container>
+
+								<md-input-container flex class="md-block">
+									<label>{{::translate.load('sbi.cockpit.table.alternate.oddrows')}}</label>
+									<color-picker options="colorPickerPropertyEvenOddRows" ng-model="newModel.settings.alternateRows.oddRowsColor"/>
+								</md-input-container>
 							</div>
 							<!-- div flex layout="row">
 								<div flex=20 layout="row" layout-align="start center">

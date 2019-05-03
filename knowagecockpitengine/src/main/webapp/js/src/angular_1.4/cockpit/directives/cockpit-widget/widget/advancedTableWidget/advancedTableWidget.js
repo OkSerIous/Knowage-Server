@@ -165,6 +165,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
                     }
 				}
 			}
+			if(params.colDef.style && params.colDef.style.maxChars){
+				tempValue = tempValue.toString().substring(0,params.colDef.style.maxChars);
+			}
 			return ((params.colDef.style && params.colDef.style.prefix) || '') + tempValue + ((params.colDef.style && params.colDef.style.suffix) || '');
 		}
 		
@@ -248,9 +251,19 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 				enableSorting: true,
 				pagination : true,
 				onCellClicked: onCellClicked,
-				getRowHeight : function(params){
+				getRowHeight: function(params){
 					if(_rowHeight > 0) return parseInt(_rowHeight);
 					else return 28;
+				},
+				getRowStyle: function(params) {
+					if($scope.ngModel.settings.alternateRows && $scope.ngModel.settings.alternateRows.enabled){
+					    if($scope.ngModel.settings.alternateRows.oddRowsColor && params.node.rowIndex % 2 === 0) {
+					        return { background: $scope.ngModel.settings.alternateRows.oddRowsColor }
+					    }
+					    if($scope.ngModel.settings.alternateRows.evenRowsColor && params.node.rowIndex % 2 != 0){
+					    	return { background: $scope.ngModel.settings.alternateRows.evenRowsColor }
+					    }
+					}
 				}
 		}
 		function getRowHeight(params) {
